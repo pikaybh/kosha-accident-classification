@@ -12,8 +12,8 @@ import matplotlib.pyplot as plt
 from matplotlib import font_manager, rc
 import streamlit.components.v1 as components  # components 임포트
 
-shutil.copy(r"static\fonts\HANBATANG.TTF", matplotlib.matplotlib_fname().replace("matplotlibrc", "fonts")+"HANBATANG.TTF")
-shutil.copy(r"static\fonts\HANBATANGB.TTF", matplotlib.matplotlib_fname().replace("matplotlibrc", "fonts")+"HANBATANGB.TTF")
+shutil.copy(r".\static\fonts\HANBATANG.TTF", matplotlib.matplotlib_fname().replace("matplotlibrc", "fonts")+"HANBATANG.TTF")
+shutil.copy(r".\static\fonts\HANBATANGB.TTF", matplotlib.matplotlib_fname().replace("matplotlibrc", "fonts")+"HANBATANGB.TTF")
 # 한글 폰트 설정 (Windows)
 font_path = r'./static/fonts/HANBATANG.TTF'
 font_name = font_manager.FontProperties(fname=font_path).get_name()
