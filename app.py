@@ -13,10 +13,6 @@ import matplotlib.pyplot as plt
 from matplotlib import font_manager, rc
 import streamlit.components.v1 as components  # components 임포트
 
-# 원본 폰트 파일 경로
-font_path = r'./static/fonts/HANBATANG.TTF'
-font_name = font_manager.FontProperties(fname=font_path).get_name()
-rc('font', family=font_name)
 # Streamlit UI
 st.set_page_config(
     page_title='Excel Zero Shot Classification',
@@ -36,6 +32,10 @@ streamlit_style = """
 			</style>
 			"""
 st.markdown(streamlit_style, unsafe_allow_html=True)
+# 원본 폰트 파일 경로
+font_path = r'./static/fonts/HANBATANG.TTF'
+font_name = font_manager.FontProperties(fname=font_path).get_name()
+rc('font', family=font_name)
 # Sidebar
 st.sidebar.header("작업 공종 예시")
 with st.sidebar:
