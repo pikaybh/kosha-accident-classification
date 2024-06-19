@@ -14,27 +14,6 @@ from matplotlib import font_manager, rc
 import streamlit.components.v1 as components  # components 임포트
 
 # 원본 폰트 파일 경로
-"""
-source_font_regular = r".\static\fonts\HANBATANG.TTF"
-source_font_bold = r".\static\fonts\HANBATANGB.TTF"
-
-# matplotlib 폰트 디렉토리 경로
-matplotlib_fonts_dir = matplotlib.matplotlib_fname().replace("matplotlibrc", "fonts")
-
-# 대상 폰트 파일 경로
-destination_font_regular = os.path.join(matplotlib_fonts_dir, "HANBATANG.TTF")
-destination_font_bold = os.path.join(matplotlib_fonts_dir, "HANBATANGB.TTF")
-
-# 폰트 파일이 존재하지 않으면 복사
-if not os.path.exists(destination_font_regular):
-    shutil.copy(source_font_regular, destination_font_regular)
-    print(f"Copied {source_font_regular} to {destination_font_regular}")
-
-if not os.path.exists(destination_font_bold):
-    shutil.copy(source_font_bold, destination_font_bold)
-    print(f"Copied {source_font_bold} to {destination_font_bold}")
-"""
-# 한글 폰트 설정 (Windows)
 font_path = r'./static/fonts/HANBATANG.TTF'
 font_name = font_manager.FontProperties(fname=font_path).get_name()
 rc('font', family=font_name)
@@ -44,6 +23,19 @@ st.set_page_config(
     page_icon='https://i.namu.wiki/i/NgVoid2KU7eIGUnYVeZKBcfdydT9zq9_l69cYGpP1LwOFKn4nnbHe_OhsE3MWPcDtt6jqST_9tUSjyuNw3lNzw.svg',
     initial_sidebar_state='collapsed'
 )
+streamlit_style = """
+			<style>
+			@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+			html, body, [class*="css"]  {
+                font-family: "Noto Sans KR", sans-serif;
+                font-optical-sizing: auto;
+                font-weight: <weight>;
+                font-style: normal;
+            }
+			</style>
+			"""
+st.markdown(streamlit_style, unsafe_allow_html=True)
 # Sidebar
 st.sidebar.header("작업 공종 예시")
 with st.sidebar:
