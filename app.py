@@ -12,8 +12,25 @@ import matplotlib.pyplot as plt
 from matplotlib import font_manager, rc
 import streamlit.components.v1 as components  # components 임포트
 
-shutil.copy(r".\static\fonts\HANBATANG.TTF", matplotlib.matplotlib_fname().replace("matplotlibrc", "fonts")+"HANBATANG.TTF")
-shutil.copy(r".\static\fonts\HANBATANGB.TTF", matplotlib.matplotlib_fname().replace("matplotlibrc", "fonts")+"HANBATANGB.TTF")
+# 원본 폰트 파일 경로
+source_font_regular = r".\static\fonts\HANBATANG.TTF"
+source_font_bold = r".\static\fonts\HANBATANGB.TTF"
+
+# matplotlib 폰트 디렉토리 경로
+matplotlib_fonts_dir = matplotlib.matplotlib_fname().replace("matplotlibrc", "fonts")
+
+# 대상 폰트 파일 경로
+destination_font_regular = os.path.join(matplotlib_fonts_dir, "HANBATANG.TTF")
+destination_font_bold = os.path.join(matplotlib_fonts_dir, "HANBATANGB.TTF")
+
+# 폰트 파일이 존재하지 않으면 복사
+if not os.path.exists(destination_font_regular):
+    shutil.copy(source_font_regular, destination_font_regular)
+    print(f"Copied {source_font_regular} to {destination_font_regular}")
+
+if not os.path.exists(destination_font_bold):
+    shutil.copy(source_font_bold, destination_font_bold)
+    print(f"Copied {source_font_bold} to {destination_font_bold}")
 # 한글 폰트 설정 (Windows)
 font_path = r'./static/fonts/HANBATANG.TTF'
 font_name = font_manager.FontProperties(fname=font_path).get_name()
