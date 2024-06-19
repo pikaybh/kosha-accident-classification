@@ -23,7 +23,7 @@ streamlit_style = """
 			<style>
 			@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
 
-			.noto-sans-kr-<uniquifier>  {
+			html, body, [class*="css"]  {
                 font-family: "Noto Sans KR", sans-serif;
                 font-optical-sizing: auto;
                 font-weight: <weight>;
@@ -33,8 +33,8 @@ streamlit_style = """
 			"""
 st.markdown(streamlit_style, unsafe_allow_html=True)
 # 원본 폰트 파일 경로
-font_path = r'./static/fonts/HANBATANG.TTF'
-font_name = font_manager.FontProperties(fname=font_path).get_name()
+# font_path = r'./static/fonts/HANBATANG.TTF'
+font_name = font_manager.FontProperties(fname="Noto Sans KR").get_name()
 rc('font', family=font_name)
 # Sidebar
 st.sidebar.header("작업 공종 예시")
