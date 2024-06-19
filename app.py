@@ -6,9 +6,12 @@ import streamlit as st
 import pandas as pd
 import openai
 from io import BytesIO
+import matplotlib
 import matplotlib.pyplot as plt
 from matplotlib import font_manager, rc
+import streamlit.components.v1 as components  # components 임포트
 
+matplotlib.matplotlib_fname()
 # 한글 폰트 설정 (Windows)
 font_path = r'./static/fonts/HANBATANG.TTF'
 font_name = font_manager.FontProperties(fname=font_path).get_name()
@@ -22,13 +25,8 @@ st.set_page_config(
 # Sidebar
 st.sidebar.header("작업 공종 예시")
 with st.sidebar:
-    st.markdown("""
-    ---
-
-    > 이거 긁어서 Class로 입력하면 됨.
-
-    ---
-
+    # HTML and JavaScript for clipboard copying
+    copy_text = """
     - 가설전기 작업
     - 비계 조립 및 해체 작업
     - 낙하물방지망 및 방호선반 작업
@@ -77,7 +75,18 @@ with st.sidebar:
     - 본댐 기계설비 작업
     - 공도교 작업
     - 복공 설치 및 해체 작업
-    """)
+    """
+    copy_button = f"""
+    <button onclick="copyToClipboard()">Copy to Clipboard</button>
+    <script>
+    function copyToClipboard() {{
+        navigator.clipboard.writeText(`{copy_text}`);
+        alert("Copied to clipboard");
+    }}
+    </script>
+    """
+    components.html(copy_button)
+    st.write(copy_text)
 
 # Function to display column preview
 def display_column_preview(df, column):
