@@ -23,7 +23,7 @@ streamlit_style = """
 			<style>
 			@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
 
-			html, body, [class*="css"]  {
+			.noto-sans-kr-<uniquifier>  {
                 font-family: "Noto Sans KR", sans-serif;
                 font-optical-sizing: auto;
                 font-weight: <weight>;
