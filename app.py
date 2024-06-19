@@ -13,6 +13,71 @@ from matplotlib import font_manager, rc
 font_path = r'./static/fonts/HANBATANG.TTF'
 font_name = font_manager.FontProperties(fname=font_path).get_name()
 rc('font', family=font_name)
+# Streamlit UI
+st.set_page_config(
+    page_title='Excel Zero Shot Classification',
+    page_icon='https://i.namu.wiki/i/NgVoid2KU7eIGUnYVeZKBcfdydT9zq9_l69cYGpP1LwOFKn4nnbHe_OhsE3MWPcDtt6jqST_9tUSjyuNw3lNzw.svg',
+    initial_sidebar_state='collapsed'
+)
+# Sidebar
+st.sidebar.header("작업 공종 예시")
+with st.sidebar:
+    st.markdown("""
+    ---
+
+    > 이거 긁어서 Class로 입력하면 됨.
+
+    ---
+
+    - 가설전기 작업
+    - 비계 조립 및 해체 작업
+    - 낙하물방지망 및 방호선반 작업
+    - 타워크레인 설치 및 해체 작업
+    - 건설용 리프트 설치 및 해체 작업
+    - 굴착 및 발파 작업
+    - 흙막이 지보공 작업
+    - 거푸집동바리 작업
+    - 철근 작업
+    - 콘크리트 타설 작업
+    - 작업발판 일체형 거푸집 작업
+    - 철골 작업
+    - PC 작업
+    - 외부마감 작업
+    - 내부마감 작업
+    - 기계식주차장 설치 작업
+    - 엘리베이터 설치 작업
+    - 기계실 설비 작업
+    - *지상높이가 31미터 이상인 건축물 참고
+    - *깊이 10미터 이상인 굴착공사 참고
+    - 가설작업
+    - 가설도로 작업
+    - 파일 작업
+    - 구조물 작업
+    - 거더작업(PSC I형거더)
+    - FCM(Free Cantilever method)
+    - ILM(Incremental Launching Method)
+    - FSM(Full Staging Method)
+    - PSM(Precast Segment Method)
+    - 강교(Steel Box)
+    - 주탑 및 케이블 설치작업(현수교, 사장교 및 Extradosed교)
+    - 비계작업
+    - 갱구부 또는 수직구 굴착작업
+    - 플랜트 설치작업
+    - 터널 발파작업
+    - 버럭 처리작업
+    - 숏크리트 작업
+    - 강지보공 작업
+    - 락볼트 작업
+    - 터널 방수 및 철근배근 작업
+    - 라이닝 콘크리트 작업
+    - 기타 기계설비 설치작업
+    - 가체절(가물막이) 작업
+    - 배치플랜트 작업
+    - 기초처리 작업
+    - 본댐 기계설비 작업
+    - 공도교 작업
+    - 복공 설치 및 해체 작업
+    """)
 
 # Function to display column preview
 def display_column_preview(df, column):
