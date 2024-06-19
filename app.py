@@ -34,8 +34,8 @@ streamlit_style = """
 st.markdown(streamlit_style, unsafe_allow_html=True)
 # 원본 폰트 파일 경로
 # font_path = r'./static/fonts/HANBATANG.TTF'
-font_name = font_manager.FontProperties(fname="Noto Sans KR").get_name()
-rc('font', family=font_name)
+# font_name = font_manager.FontProperties(fname="Noto Sans KR").get_name()
+rc('font', family="Noto Sans KR")
 # Sidebar
 st.sidebar.header("작업 공종 예시")
 with st.sidebar:
