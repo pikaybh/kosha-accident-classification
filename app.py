@@ -14,6 +14,7 @@ from matplotlib import font_manager, rc
 import streamlit.components.v1 as components  # components 임포트
 
 # 원본 폰트 파일 경로
+"""
 source_font_regular = r".\static\fonts\HANBATANG.TTF"
 source_font_bold = r".\static\fonts\HANBATANGB.TTF"
 
@@ -32,6 +33,7 @@ if not os.path.exists(destination_font_regular):
 if not os.path.exists(destination_font_bold):
     shutil.copy(source_font_bold, destination_font_bold)
     print(f"Copied {source_font_bold} to {destination_font_bold}")
+"""
 # 한글 폰트 설정 (Windows)
 font_path = r'./static/fonts/HANBATANG.TTF'
 font_name = font_manager.FontProperties(fname=font_path).get_name()
