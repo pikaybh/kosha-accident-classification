@@ -21,12 +21,13 @@ def display_column_preview(df, column):
 # Function to perform zero-shot classification using OpenAI
 def zero_shot_classification(df, column, classes, model_name, openai_api_key):
     # openai.api_key = openai_api_key
+    etr : str = '\n- '
     results = []
     for text in df[column]:
         client = openai.OpenAI()
         response = client.chat.completions.create(
             model=model_name,
-            messages=f"다음 텍스트를 다음 중 하나로 분류하세요: \n\n- {'\n- '.join(classes)}.\n\nText: {text}\nClass:",
+            messages=f"다음 텍스트를 다음 중 하나로 분류하세요: \n\n- {etr.join(classes)}.\n\nText: {text}\nClass:",
             max_tokens=16,
             n=1,
             stop=None,
