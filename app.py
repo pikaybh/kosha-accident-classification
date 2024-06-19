@@ -6,6 +6,7 @@ import streamlit as st
 import pandas as pd
 import openai
 import shutil
+import os
 from io import BytesIO
 import matplotlib
 import matplotlib.pyplot as plt
