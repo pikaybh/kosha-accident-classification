@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from matplotlib import font_manager, rc
 
 # 한글 폰트 설정 (Windows)
-font_path = r'static\fonts\HANBATANG.TTF'
+font_path = r'./static/fonts/HANBATANG.TTF'
 font_name = font_manager.FontProperties(fname=font_path).get_name()
 rc('font', family=font_name)
 
