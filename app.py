@@ -12,6 +12,22 @@ import matplotlib
 import matplotlib.pyplot as plt
 from matplotlib import font_manager, rc
 import streamlit.components.v1 as components  # components 임포트
+import logging
+
+# Root 
+logger_name = "app"
+logger = logging.getLogger(logger_name)
+logger.setLevel(logging.DEBUG)
+# File Handler
+file_handler = logging.FileHandler(f'logs/{logger_name}.log', encoding='utf-8-sig')
+file_handler.setLevel(logging.DEBUG)
+file_handler.setFormatter(logging.Formatter(r'%(asctime)s [%(name)s, line %(lineno)d] %(levelname)s: %(message)s'))
+logger.addHandler(file_handler)
+# Stream Handler
+stream_handler = logging.StreamHandler()
+stream_handler.setLevel(logging.INFO)
+stream_handler.setFormatter(logging.Formatter(r'%(message)s'))
+logger.addHandler(stream_handler)
 
 # Streamlit UI
 st.set_page_config(
@@ -33,8 +49,11 @@ streamlit_style = """
 			"""
 st.markdown(streamlit_style, unsafe_allow_html=True)
 # 원본 폰트 파일 경로
-# font_path = r'./static/fonts/HANBATANG.TTF'
-# font_name = font_manager.FontProperties(fname="Noto Sans KR").get_name()
+try:
+    font_path = r'./static/fonts/HANBATANG.TTF'
+    font_name = font_manager.FontProperties(fname="Noto Sans KR").get_name()
+except Exception as e:
+    logger.debug(e)
 rc('font', family="Noto Sans KR")
 # Sidebar
 st.sidebar.header("작업 공종 예시")
@@ -223,6 +242,9 @@ if openai_api_key:
                 # Select GPT model
                 model_name = st.selectbox("Select a GPT model", ["babbage-002", "davinci-002", "gpt-3.5-turbo", "gpt-3.5-turbo-0125", "gpt-4", "gpt-4-0613", "gpt-4-turbo", "gpt-4o"])
 
+                # Input for new column name
+                new_column_name = st.text_input("Enter the name for the new column", value="작업공종")
+
                 if st.button("Perform Classification"):
                     with st.spinner('Performing classification...'):
                         progress_bar = st.progress(0)
@@ -238,14 +260,16 @@ if openai_api_key:
                             progress_bar.progress((i + 1) / total_steps)
 
                         # 새로운 컬럼에 결과 저장
-                        df["작업공종"] = results
+
+
+                        df[new_column_name] = results
                         del progress_bar
                     st.write("Classification Completed!")
                     st.write(df.head())
 
                     # Display pie chart
                     st.write("Classification Results:")
-                    chart_data = df["작업공종"].value_counts()
+                    chart_data = df[new_column_name].value_counts()
                     st.write(chart_data)
                     fig, ax = plt.subplots()
                     chart_data.plot.pie(autopct="%1.1f%%", ax=ax)
