@@ -236,7 +236,7 @@ if openai_api_key:
             classes = st.text_area("Enter class labels separated by commas or bullet points")
 
             if classes:
-                classes_list = [x.strip() for x in classes.replace('- ', ',').split(",") if x.strip()]
+                classes_list = [x.strip() for x in classes.replace('-', ',').split(",") if x.strip()]
                 st.write("Class Labels: ", classes_list)
 
                 # Select GPT model
