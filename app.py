@@ -40,7 +40,7 @@ rc('font', family="Noto Sans KR")
 st.sidebar.header("작업 공종 예시")
 with st.sidebar:
     # HTML and JavaScript for clipboard copying
-    copy_text = """
+    copy_text1 = """
     - 가설전기 작업
     - 비계 조립 및 해체 작업
     - 낙하물방지망 및 방호선반 작업
@@ -90,17 +90,83 @@ with st.sidebar:
     - 공도교 작업
     - 복공 설치 및 해체 작업
     """
-    copy_button = f"""
+    copy_button1 = f"""
     <button onclick="copyToClipboard()">Copy to Clipboard</button>
     <script>
     function copyToClipboard() {{
-        navigator.clipboard.writeText(`{copy_text}`);
+        navigator.clipboard.writeText(`{copy_text1}`);
         alert("Copied to clipboard");
     }}
     </script>
     """
-    components.html(copy_button)
-    st.write(copy_text)
+    components.html(copy_button1)
+    st.write(copy_text1)
+
+    copy_text2 = """
+    - 토사반출
+    - 가설공사
+    - 흙막이 공사
+    - 기초공사
+    - 옹벽공사
+    - 지하층 공사
+    - 지상층 공사
+    - 타워크레인
+    - 리프트
+    - 낙하물방지망
+    - 지하층 마감
+    - 지상층 마감
+    - 부대토목
+    - 기타
+    """
+    copy_button2 = f"""
+    <button onclick="copyToClipboard()">Copy to Clipboard</button>
+    <script>
+    function copyToClipboard() {{
+        navigator.clipboard.writeText(`{copy_text2}`);
+        alert("Copied to clipboard");
+    }}
+    </script>
+    """
+    components.html(copy_button2)
+    st.write(copy_text2)
+
+    copy_text3 = """
+    - 충돌
+    - 추락
+    - 전도
+    - 낙하
+    - 파단
+    - 붕괴
+    - 협착
+    - 질식
+    - 
+    """
+    copy_button3 = f"""
+    <button onclick="copyToClipboard()">Copy to Clipboard</button>
+    <script>
+    function copyToClipboard() {{
+        navigator.clipboard.writeText(`{copy_text3}`);
+        alert("Copied to clipboard");
+    }}
+    </script>
+    """
+    components.html(copy_button3)
+    st.write(copy_text3)
+
+    copy_text4 = """
+    - 사고 대상 ㅠㅠ
+    """
+    copy_button4 = f"""
+    <button onclick="copyToClipboard()">Copy to Clipboard</button>
+    <script>
+    function copyToClipboard() {{
+        navigator.clipboard.writeText(`{copy_text4}`);
+        alert("Copied to clipboard");
+    }}
+    </script>
+    """
+    components.html(copy_button4)
+    st.write(copy_text4)
 
 # Function to display column preview
 def display_column_preview(df, column):
